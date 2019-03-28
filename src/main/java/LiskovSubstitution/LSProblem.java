@@ -36,6 +36,6 @@ public class LSProblem {
         coffee.addMilk();
 
         tea.prepareDrink();
-        tea.addMilk(); // burada anlamsız
+        tea.addMilk(); // this is pointless
     }
 }
