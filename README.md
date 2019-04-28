@@ -72,13 +72,13 @@ static class PrintMessage { --new code
 3. Send message method is also one of the future that it can be seperable from others. So it should be also a class and we convert it to class.
 
 ```java
-public static void sendMessage() {
+public static void sendMessage() { --old code
 	System.out.println("Message sent. Content is : " + messageBody);
 }
 ```
 
 ```java
-static class SendMessage {
+static class SendMessage { --new code
 	public static void sendMessage(String messageBody) {
 		System.out.println("Message sent. Content is : " + messageBody);
 	}
