@@ -39,14 +39,14 @@ public class SRPProblem {
 1. Write message method is one of the future that it can be seperable from others. So it should be a class and we convert it to class.
 
 ```java
-public static void writeMessage(String message) {  --old code
+public static void writeMessage(String message) {
 	messageBody = message;
 	PrintMessage.printMessage(messageBody);
 }
 ```
-
+Instead of the above, we will use below.
 ```java
-static class WriteMessage { --new code
+static class WriteMessage {
 	static String messageBody;
 	public static void writeMessage(String message) {
 		messageBody = message;
@@ -57,13 +57,13 @@ static class WriteMessage { --new code
 2. Print message method is also one of the future that it can be seperable from others. So it should be also a class and we convert it to class.
 
 ```java
-public static void printMessage(String messageBody) { --old code
+public static void printMessage(String messageBody) {
 	System.out.println("Message is : " + messageBody);
 }
 ```
-
+Instead of the above, we will use below.
 ```java
-static class PrintMessage { --new code
+static class PrintMessage {
 	public static void printMessage(String messageBody) {
 		System.out.println("Message is : " + messageBody);
 	}
@@ -72,13 +72,13 @@ static class PrintMessage { --new code
 3. Send message method is also one of the future that it can be seperable from others. So it should be also a class and we convert it to class.
 
 ```java
-public static void sendMessage() { --old code
+public static void sendMessage() {
 	System.out.println("Message sent. Content is : " + messageBody);
 }
 ```
-
+Instead of the above, we will use below.
 ```java
-static class SendMessage { --new code
+static class SendMessage {
 	public static void sendMessage(String messageBody) {
 		System.out.println("Message sent. Content is : " + messageBody);
 	}
@@ -123,9 +123,7 @@ public class SRPSolution {
 ```
 Homework: Replace of message future also can be a class, you can apply single responsibility principle at this point.
 
-## Open Close 
+## Open Close
 ## Liskov Substitution
 ## Interface Segregation
 ## Dependency Inversion
-
-
