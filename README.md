@@ -4,7 +4,7 @@
 Definition: A class should have only one reason to change.
 Meaning: **ONE FUNCTION/CLASS = ONE RESPONSIBILITY**
 
-Problem: We have a message class below that it can prepare, print and send message.
+**Problem**: We have a message class below that it can prepare, print and send message.
 
 ```java
 public class SRPProblem {
@@ -36,7 +36,7 @@ public class SRPProblem {
     }
 }
 ```
-Solution : Each of these futures should be a separate class. 
+**Solution** : Each of these futures should be a separate class. 
 1. Write message method is one of the future that it can be seperable from others. So it should be a class and we convert it to class.
 
 ```java
@@ -87,7 +87,7 @@ static class SendMessage {
 
 ```
 
-Solution: As you will see below, we seperate futures to different classes ( write, print, send ) and each class just do it's job for appling single responsibility principle.
+As you will see below, we seperate futures to different classes ( write, print, send ) and each class just do it's job for appling single responsibility principle.
 ```java
 public class SRPSolution {
     static class WriteMessage {
@@ -150,6 +150,7 @@ public class OCPProblem {
 }
 ```
 Solution : So we have to design our class that it should not change when a new notification type added.
+
 
 ## Liskov Substitution Principle
 ## Interface Segregation Principle
