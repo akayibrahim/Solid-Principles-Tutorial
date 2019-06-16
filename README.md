@@ -129,8 +129,28 @@ Definition: Software entities (classes, functions, etc.) should be open for exte
 Meaning: **FUNCTION/CLASS = :tw-2705: EXTENSION :tw-274e: MODIFICATION**
 
 Problem: We have a notification class below that it can notify customer as sms or mail. If we want to add a new notification type, we have to change our class.
+```java
+public class OCPProblem {
+    enum messageType { SMS, MAIL }
+    static class Notification {
+        static String messageBody;
+        static public void notifyCustomer(messageType type, String messageBody) {
+            if (type.equals(messageType.MAIL)) {
+                System.out.println("Message sent as mail. Content is : " + messageBody);
+            } else if (type.equals(messageType.SMS)) {
+                System.out.println("Message sent as sms. Content is : " + messageBody);
+            }
+        }
+    }
 
+    public static void main(String[] args) {
+        Notification.notifyCustomer(messageType.MAIL, "Your application has been received.");
+        Notification.notifyCustomer(messageType.SMS, "Your application has been received.");
+    }
+}
+```
 Solution : So we have to design our class that it should not change when a new notification type added.
+
 ## Liskov Substitution Principle
 ## Interface Segregation Principle
 ## Dependency Inversion Principle
