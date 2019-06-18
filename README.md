@@ -150,7 +150,56 @@ public class OCPProblem {
 }
 ```
 Solution : So we have to design our class that it should not change when a new notification type added.
+1. Firstly, we will create an abstact class for notify.
+```java
+public static abstract class Notify {
+		public abstract void notifyCustomer(String messageBody);
+}
+```
+1. Now we can add sms and mail notification types that they extend our abstract class.
+```java
+public static class NotificationViaSMS extends Notify {
+	public void notifyCustomer(String messageBody) {
+		System.out.println("Message sent as sms. Content is : " + messageBody);
+	}
+}
+public static class NotificationViaMail extends Notify {
+	public void notifyCustomer(String messageBody) {
+		System.out.println("Message sent as mail. Content is : " + messageBody);
+	}
+}
+```
+As a result, our code turn to below.
+```java
+public class OCPSolution {
+    static class Notification {
+        public static abstract class Notify {
+            public abstract void notifyCustomer(String messageBody);
+        }
 
+        public static class NotificationViaSMS extends Notify {
+            public void notifyCustomer(String messageBody) {
+                System.out.println("Message sent as sms. Content is : " + messageBody);
+            }
+        }
+
+        public static class NotificationViaMail extends Notify {
+            public void notifyCustomer(String messageBody) {
+                System.out.println("Message sent as mail. Content is : " + messageBody);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Notification.NotificationViaMail mail = new Notification.NotificationViaMail();
+        Notification.NotificationViaSMS sms = new Notification.NotificationViaSMS();
+        mail.notifyCustomer("Your application has been received.");
+        sms.notifyCustomer("Your application has been received.");
+    }
+}
+```
+
+After this transformation, we are free for adding new notification types without regression to anywhere.
 
 ## Liskov Substitution Principle
 ## Interface Segregation Principle
