@@ -9,11 +9,13 @@ public class LSSolution {
             public static void prepareDrink() {
                 System.out.println("prepared.");
             }
-
-            public abstract void addMilk();
         }
 
-        public static class CoffeeMachine extends Machine {
+        public static interface IAddMilk {
+            void addMilk();
+        }
+
+        public static class CoffeeMachine extends Machine implements IAddMilk {
 
             public void addMilk() {
                 System.out.println("milk added.");
@@ -22,20 +24,16 @@ public class LSSolution {
 
         public static class TeaMachine extends Machine {
 
-            public void addMilk() {
-                // nothing
-            }
         }
     }
 
     public static void main(String[] args) {
-        DrinkMachine.Machine coffee = new DrinkMachine.CoffeeMachine();
+        DrinkMachine.CoffeeMachine coffee = new DrinkMachine.CoffeeMachine();
         DrinkMachine.Machine tea = new DrinkMachine.TeaMachine();
 
         coffee.prepareDrink();
         coffee.addMilk();
 
         tea.prepareDrink();
-        tea.addMilk(); // burada anlamsız
     }
 }
