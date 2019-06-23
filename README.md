@@ -156,7 +156,7 @@ public static abstract class Notify {
 		public abstract void notifyCustomer(String messageBody);
 }
 ```
-1. Now we can add sms and mail notification types that they extend our abstract class.
+2. Now we can add sms and mail notification types that they extend our abstract class.
 ```java
 public static class NotificationViaSMS extends Notify {
 	public void notifyCustomer(String messageBody) {
