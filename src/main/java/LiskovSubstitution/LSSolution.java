@@ -31,9 +31,13 @@ public class LSSolution {
         DrinkMachine.CoffeeMachine coffee = new DrinkMachine.CoffeeMachine();
         DrinkMachine.Machine tea = new DrinkMachine.TeaMachine();
 
-        coffee.prepareDrink();
+        callDrinkMachine(coffee);
         coffee.addMilk();
 
-        tea.prepareDrink();
+        callDrinkMachine(tea);
+    }
+
+    public static void callDrinkMachine(DrinkMachine.Machine machine) {
+        machine.prepareDrink();
     }
 }

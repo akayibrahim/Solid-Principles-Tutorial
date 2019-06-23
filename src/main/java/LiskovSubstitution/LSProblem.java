@@ -1,5 +1,7 @@
 package LiskovSubstitution;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 /**
  * Created by iakay on 18.03.2019.
  */
@@ -22,8 +24,8 @@ public class LSProblem {
 
         public static class TeaMachine extends Machine {
 
-            public void addMilk() {
-                // nothing
+            public void addMilk(){
+                throw new NotImplementedException();
             }
         }
     }
@@ -32,10 +34,12 @@ public class LSProblem {
         DrinkMachine.Machine coffee = new DrinkMachine.CoffeeMachine();
         DrinkMachine.Machine tea = new DrinkMachine.TeaMachine();
 
-        coffee.prepareDrink();
-        coffee.addMilk();
+        callDrinkMachine(coffee);
+        callDrinkMachine(tea);
+    }
 
-        tea.prepareDrink();
-        tea.addMilk(); // this is pointless
+    public static void callDrinkMachine(DrinkMachine.Machine machine) {
+        machine.prepareDrink();
+        machine.addMilk();
     }
 }
