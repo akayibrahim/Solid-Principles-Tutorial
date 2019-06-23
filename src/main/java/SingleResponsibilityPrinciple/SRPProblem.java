@@ -31,4 +31,3 @@ public class SRPProblem {
         Message.sendMessage();
     }
 }
-//https://www.baeldung.com/solid-principles
