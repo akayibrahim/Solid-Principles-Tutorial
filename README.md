@@ -249,4 +249,3 @@ public class LSProblem {
 
 ## Interface Segregation Principle
 ## Dependency Inversion Principle
-
