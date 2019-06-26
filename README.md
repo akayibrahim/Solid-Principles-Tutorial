@@ -2,6 +2,7 @@
 
 ## Single Responsibility Principle
 Definition: A class should have only one reason to change.
+
 Meaning: **ONE FUNCTION/CLASS = ONE RESPONSIBILITY**
 
 **Problem**: We have a message class below that it can prepare, print and send message.
@@ -126,6 +127,7 @@ Homework: Replace of message future also can be a class, you can apply single re
 
 ## Open Close Principle
 Definition: Software entities (classes, functions, etc.) should be open for extension, but closed for modification.
+
 Meaning: **FUNCTION/CLASS = :tw-2705: EXTENSION :tw-274e: MODIFICATION**
 
 Problem: We have a notification class below that it can notify customer as sms or mail. If we want to add a new notification type, we have to change our class.
@@ -202,7 +204,8 @@ public class OCPSolution {
 After this transformation, we are free for adding new notification types without regression to anywhere.
 
 ## Liskov Substitution Principle
-Definition: The principle defines that objects of a superclass shall be replaceable with objects of its subclasses without breaking the application
+Definition: The principle defines that objects of a superclass shall be replaceable with objects of its subclasses without breaking the application.
+
 Meaning: **(Class A extends Class B) = (Class B extends Class A)**
 
 Problem: We have a drink machine class below that it can prepapre drink and adding milk to drink. When we want to drink coffee, machine can preprare it and it can add milk to coffee. If we want to drink tea, it can prepare but it should not add milk to tea. If we check the rule, TeaMachine class can not replaceable with DrinkMachine class. So it will throw error when tea machine add milk.
@@ -249,3 +252,5 @@ public class LSProblem {
 
 ## Interface Segregation Principle
 ## Dependency Inversion Principle
+
+
