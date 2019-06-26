@@ -153,20 +153,20 @@ Solution : So we have to design our class that it should not change when a new n
 1. Firstly, we will create an abstact class for notify.
 ```java
 public static abstract class Notify {
-		public abstract void notifyCustomer(String messageBody);
+        public abstract void notifyCustomer(String messageBody);
 }
 ```
 2. Now we can add sms and mail notification types that they extend our abstract class.
 ```java
 public static class NotificationViaSMS extends Notify {
-	public void notifyCustomer(String messageBody) {
-		System.out.println("Message sent as sms. Content is : " + messageBody);
-	}
+    public void notifyCustomer(String messageBody) {
+        System.out.println("Message sent as sms. Content is : " + messageBody);
+    }
 }
 public static class NotificationViaMail extends Notify {
-	public void notifyCustomer(String messageBody) {
-		System.out.println("Message sent as mail. Content is : " + messageBody);
-	}
+    public void notifyCustomer(String messageBody) {
+        System.out.println("Message sent as mail. Content is : " + messageBody);
+    }
 }
 ```
 As a result, our code turn to below.
@@ -202,5 +202,51 @@ public class OCPSolution {
 After this transformation, we are free for adding new notification types without regression to anywhere.
 
 ## Liskov Substitution Principle
+Definition: The principle defines that objects of a superclass shall be replaceable with objects of its subclasses without breaking the application
+Meaning: **(Class A extends Class B) = (Class B extends Class A)**
+
+Problem: We have a drink machine class below that it can prepapre drink and adding milk to drink. When we want to drink coffee, machine can preprare it and it can add milk to coffee. If we want to drink tea, it can prepare but it should not add milk to tea. If we check the rule, TeaMachine class can not replaceable with DrinkMachine class. So it will throw error when tea machine add milk.
+```java
+public class LSProblem {
+    static class DrinkMachine {
+        public static abstract class Machine {
+            public static void prepareDrink() {
+                System.out.println("prepared.");
+            }
+
+            public abstract void addMilk();
+        }
+
+        public static class CoffeeMachine extends Machine {
+
+            public void addMilk() {
+                System.out.println("milk added.");
+            }
+        }
+
+        public static class TeaMachine extends Machine {
+
+            public void addMilk(){
+                throw new NotImplementedException();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        DrinkMachine.Machine coffee = new DrinkMachine.CoffeeMachine();
+        DrinkMachine.Machine tea = new DrinkMachine.TeaMachine();
+
+        callDrinkMachine(coffee);
+        callDrinkMachine(tea);
+    }
+
+    public static void callDrinkMachine(DrinkMachine.Machine machine) {
+        machine.prepareDrink();
+        machine.addMilk();
+    }
+}
+```
+
 ## Interface Segregation Principle
 ## Dependency Inversion Principle
+
