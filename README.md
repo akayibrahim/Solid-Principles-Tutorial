@@ -208,7 +208,7 @@ Definition: The principle defines that objects of a superclass shall be replacea
 
 Meaning: **(Class A extends Class B) = (Class B extends Class A)**
 
-Problem: We have a drink machine class below that it can prepapre drink and adding milk to drink. When we want to drink coffee, machine can preprare it and it can add milk to coffee. If we want to drink tea, it can prepare but it should not add milk to tea. If we check the rule, TeaMachine class can not replaceable with DrinkMachine class. So it will throw error when tea machine add milk.
+Problem: We have a drink machine class below that it can prepapre drink and adding milk to drink. When we want to drink coffee, machine can preprare it and it can add milk to coffee. If we want to drink tea, it can prepare but it should not add milk to tea. If we check the rule, TeaMachine class can not replaceable with Machine class. So it will throw error when tea machine add milk.
 ```java
 public class LSProblem {
     static class DrinkMachine {
@@ -249,8 +249,50 @@ public class LSProblem {
     }
 }
 ```
+1. Machine class has behavior of prepare and property of adding milk. So we have to introduce behavior via another class and properties via an interface.
+
+```java
+public static abstract class Machine {
+	public static void prepareDrink() {
+		System.out.println("prepared.");
+	}
+}
+
+public static interface IAddMilk {
+	void addMilk();
+}
+```
+2. Now we can implement coffee and tea class again.
+
+```java
+public static class CoffeeMachine extends Machine implements IAddMilk {
+	public void addMilk() {
+		System.out.println("milk added.");
+	}
+}
+```
+```java
+public static class TeaMachine extends Machine {
+
+}
+```
+3. Our implemantions are finished. We can prepare our drinks.
+```java
+public static void main(String[] args) {
+		DrinkMachine.CoffeeMachine coffee = new DrinkMachine.CoffeeMachine();
+		DrinkMachine.Machine tea = new DrinkMachine.TeaMachine();
+
+		coffee.prepareDrink();
+		coffee.addMilk();
+
+		tea.prepareDrink();
+}
+```
+
+You can check the program. TeaMachine and CoffeMachine classes can replace Machine class without breaking the application. Afterall they have similar behavior.
 
 ## Interface Segregation Principle
 ## Dependency Inversion Principle
+
 
 
