@@ -292,7 +292,9 @@ public static void main(String[] args) {
 You can check the program. TeaMachine and CoffeMachine classes can replace Machine class without breaking the application. Afterall they have similar behavior.
 
 ## Interface Segregation Principle
-## Dependency Inversion Principle
+Coming soon...
 
+## Dependency Inversion Principle
+Coming soon...
 
 
