@@ -3,7 +3,7 @@
 ## Single Responsibility Principle
 Definition: A class should have only one reason to change.
 
-Meaning: **ONE FUNCTION/CLASS** has **ONE RESPONSIBILITY**
+Meaning: **ONE FUNCTION/CLASS has ONE RESPONSIBILITY**
 
 **Problem**: We have a message class below that it can prepare, print and send message.
 
